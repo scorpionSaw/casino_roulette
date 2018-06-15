@@ -11,8 +11,8 @@ public class Roulette {
 	
 	public void initNumbers(){
 		numbers = new ArrayList<>(Arrays.asList(
-				new RouletteNumber(0, 0), 
 				//1st quart
+				new RouletteNumber(0, 1), 
 				new RouletteNumber(32, 1), 
 				new RouletteNumber(15, 1), 
 				new RouletteNumber(19, 1), 
