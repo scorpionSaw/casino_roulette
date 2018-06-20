@@ -1,11 +1,13 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<base href="/">
 <title>Roulette</title>
 <link rel="stylesheet" href="/assets/css/roulette.css?v=1.0">
+
+<script type="text/javascript" src="/assets/js/prototype.js"></script>
 
 <script type="text/javascript">
 
@@ -15,13 +17,8 @@ var numberList = new Array();
 
 function onClickTd(number){
 	
-	if(numberList.indexOf(number) == -1 && number != null){
-		//add
-		numberList.push(number);
-	} else {
-		//remove
-		numberList.splice(numberList.indexOf(number),1);
-	}
+	//add
+	numberList.push(number);
 	
 	if(numberList.length > 0){
 		var url = "/roulette/getList/"+(numberList.toString())+"/?numbers=" + (numberList.toString());
@@ -66,9 +63,6 @@ function initPage(){
 
 </head>
 <body onload="initPage()">
-
-<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-<script type="text/javascript" src="/assets/js/prototype.js"></script>
 
 <table id="rouletteTable">
 	<tr>

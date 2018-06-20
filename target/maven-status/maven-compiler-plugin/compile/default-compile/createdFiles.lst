@@ -1,8 +1,2 @@
-be\chutivoli\casino_roulette\model\UserRole.class
-be\chutivoli\casino_roulette\controller\RouletteController.class
-be\chutivoli\casino_roulette\main\Main.class
-be\chutivoli\casino_roulette\model\RouletteNumber.class
-be\chutivoli\casino_roulette\model\Roulette.class
-be\chutivoli\casino_roulette\model\User.class
 be\gdepris\casino_roulette\Application.class
 be\gdepris\casino_roulette\AppConfig.class

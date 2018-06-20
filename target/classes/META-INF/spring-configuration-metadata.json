@@ -1,0 +1,12 @@
+{
+  "hints": [],
+  "groups": [
+    {
+      "sourceType": "be.gdepris.casino_roulette.AppConfig",
+      "name": "dataSourcePSQL",
+      "sourceMethod": "public javax.sql.DataSource dataSourcePostgresql() ",
+      "type": "javax.sql.DataSource"
+    }
+  ],
+  "properties": []
+}

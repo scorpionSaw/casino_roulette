@@ -3,8 +3,43 @@ table, th, td {
     cursor: pointer;
 }
 
+.tapis {
+	background-color: green;
+}
+
 td {
     width: 25px;
     height: 25px;
     text-align: center;
+}
+
+.cell {
+	background-color: green;
+    width: 25px;
+    height: 25px;
+    color: white;
+}
+
+.zero {
+    margin:0 auto;
+    border:2px solid #a1a1a1;
+    border-radius:25px;
+}
+
+.red { 
+    margin:0 auto;
+    border:2px solid #a1a1a1;
+    border-radius:25px;
+    background-color:red;
+}
+
+.black { 
+    margin:0 auto;
+    border:2px solid #a1a1a1;
+    border-radius:25px;
+    background-color:black;
+}
+
+.crossed{
+	text-decoration: line-through;
 }

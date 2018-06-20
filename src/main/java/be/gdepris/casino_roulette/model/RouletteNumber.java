@@ -4,19 +4,21 @@ public class RouletteNumber {
 	private int number;
 	private int timesPicked;
 	private int quart;
+	private NumberColor color;
 	
 	public RouletteNumber(int number) {
-		this(number, 0);
+		this(number, 0, NumberColor.RED);
 	}
 	
-	public RouletteNumber(int number, int quart) {
-		this(number, 0, quart);
+	public RouletteNumber(int number, int quart, NumberColor color) {
+		this(number, 0, quart, color);
 	}
 	
-	public RouletteNumber(int number, int timesPicked, int quart) {
+	public RouletteNumber(int number, int timesPicked, int quart, NumberColor color) {
 		this.number = number;
 		this.timesPicked = timesPicked;
 		this.quart = quart;
+		this.color = color;
 	}
 	
 	public int getNumber() {
@@ -49,6 +51,14 @@ public class RouletteNumber {
 	
 	public void setQuart(int quart) {
 		this.quart = quart;
+	}
+	
+	public NumberColor getColor() {
+		return color;
+	}
+	
+	public void setColor(NumberColor color) {
+		this.color = color;
 	}
 	
 	@Override

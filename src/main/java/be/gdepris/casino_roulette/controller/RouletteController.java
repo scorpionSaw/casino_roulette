@@ -2,6 +2,8 @@ package be.gdepris.casino_roulette.controller;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -14,6 +16,9 @@ import be.gdepris.casino_roulette.model.RouletteNumber;
 @Controller
 @RequestMapping("/roulette")
 public class RouletteController {
+	
+    @Autowired
+    private ApplicationContext appContext;
 
 	@GetMapping("/")
 	public ModelAndView getRoulette() {
@@ -27,6 +32,22 @@ public class RouletteController {
 		Roulette r = new Roulette();
 		List<RouletteNumber> rns = r.getLargestNumberListStack(9, numbers);
 		
-		return new ModelAndView("roulette", "numbers", rns);
+		return new ModelAndView("roulette", "numbers", numbersToPrettyString(rns));
+	}
+	
+	private String numbersToPrettyString(List<RouletteNumber> rns){
+		String o = "";
+		
+		for(RouletteNumber rn : rns){
+			o += "<td class=\"cell ";
+			
+			o += rn.getColor().toString().toLowerCase() + "\">";
+			o += rn.getNumber();	
+			
+			
+			o += "</td>";
+		}
+		
+		return o;
 	}
 }
