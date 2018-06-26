@@ -117,7 +117,7 @@ function initPage(){
 	<input type="button" value="Reset" id="resetBtn">
 </div>
 <br/>
-<h3>Numéros à jouer : </h3>
+<h3 style="text-decoration: underline;">Numéros à jouer : </h3>
 <div class="o-layout">
 
 		<table class="c-table c-table--striped">

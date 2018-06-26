@@ -3,7 +3,9 @@ package be.gdepris.casino_roulette.model;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
+import java.util.TreeMap;
 
 public class Roulette {
 
@@ -72,6 +74,13 @@ public class Roulette {
 		}
 	}
 	
+	private RouletteNumber getNumber(int number){
+		Optional<RouletteNumber> opt = getNumbers().stream().filter(n -> n.getNumber() == number).findAny();
+		if(opt.isPresent()){
+			return opt.get();
+		}
+		return null;
+	}
 	
 	public List<RouletteNumber> getLargestNumberListStack(int size, String numbers){
 
@@ -204,6 +213,87 @@ public class Roulette {
 		System.out.println("First ["+first+"], Second ["+second+"], Third ["+third+"], Fourth ["+fourth+"], Quart with less numbers : "+quartWithLessNumbers);
 		
 		return quartWithLessNumbers;
+	}
+	
+	public NumberList getVoisinsList(int number, int voisinsSize){
+		return new NumberList(getVoisins(number, voisinsSize));
+	}
+	
+	
+	public List<RouletteNumber> getVoisins(int number, int voisinsSize){
+		
+		List<RouletteNumber> voisins = new ArrayList<>();
+		
+		int index=0;
+		for(RouletteNumber n : getNumbers()){
+			
+			if(n.getNumber() == number){
+
+				for(int i=1; i<=voisinsSize; i++){
+				//for(int i=voisinsSize; i>0; i--){
+					
+					if(index - i < 0){
+						index = getNumbers().size() - 1;
+						voisins.add(getNumbers().get(index));
+					} else {
+						voisins.add(getNumbers().get(index-i));
+					}
+					
+				}
+				voisins.add(n);
+				index = getNumbers().indexOf(n);
+				for(int i=1; i<=voisinsSize; i++){
+					
+					if(index+i >= getNumbers().size()){
+						index = 0;
+						voisins.add(getNumbers().get(index));
+					} else {
+						voisins.add(getNumbers().get(index+i));
+					}
+					
+				}
+				
+				break;
+			}
+			index++;
+		}
+		
+		return voisins;
+	}
+	
+	public NumberList getCarre(int number){
+		if(number == 0){
+			return new NumberList().addNumbers(getNumber(0), getNumber(1), getNumber(2), getNumber(3));
+		} else if(number >= 34){
+			switch(number){
+				case 34:
+					return new NumberList().addNumbers(getNumber(31), getNumber(32), getNumber(34), getNumber(35));
+				case 35:
+					return new NumberList().addNumbers(getNumber(32), getNumber(33), getNumber(35), getNumber(36));
+				case 36:
+					return new NumberList().addNumbers(getNumber(32), getNumber(33), getNumber(35), getNumber(36));
+				default:
+					return new NumberList().addNumbers(getNumber(32), getNumber(33), getNumber(35), getNumber(36));
+			}
+		} else {
+			
+			//rangée du dessus
+			if(number % 3 == 0){
+				return new NumberList().addNumbers(getNumber(number-1), getNumber(number), getNumber(number+2), getNumber(number+3));
+			}
+			
+			return new NumberList().addNumbers(getNumber(number), getNumber(number+1), getNumber(number+3), getNumber(number+4));
+		}
+	}
+	
+	public NumberList getCheval(int number){
+		if(number == 0){
+			return new NumberList().addNumbers(getNumber(0), getNumber(3));
+		} else if(number >= 34){
+			return new NumberList().addNumbers(getNumber(number), getNumber(number-3));
+		} else {
+			return new NumberList().addNumbers(getNumber(number), getNumber(number+3));
+		}
 	}
 
 }
